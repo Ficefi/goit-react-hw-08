@@ -1,12 +1,11 @@
 import "./App.css";
-import { useEffect } from "react";
-import { ContactForm } from "./ContactForm/ContactForm";
-import { SearchBox } from "./SearchBox/SearchBox";
-import { ContactList } from "./ContactsList/ContactList";
+import { useEffect, lazy, Suspense } from "react";
 import { fetchContacts } from "../redux/operations";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { Routes, Route } from "react-router-dom";
 
-const key = "saved-users";
+const Home = lazy(() => import("../pages/HomePage"));
+const Search = lazy(() => import("../pages/SearchPage"));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -16,19 +15,9 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <h2
-        style={{
-          color: "white",
-          textAlign: "center",
-        }}
-      >
-        Phonebook
-      </h2>
-
-      <ContactForm />
-      <SearchBox />
-      <ContactList />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/search" element={<Search />} />
+    </Routes>
   );
 };
