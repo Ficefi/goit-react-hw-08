@@ -5,7 +5,9 @@ import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 
 const Home = lazy(() => import("../pages/HomePage"));
-const Search = lazy(() => import("../pages/SearchPage"));
+const Phonebook = lazy(() => import("../pages/PhonebookPage"));
+const SigninPage = lazy(() => import("../pages/SigninPage"));
+const SignupPage = lazy(() => import("../pages/SignupPage"));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -15,9 +17,13 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/search" element={<Search />} />
-    </Routes>
+    <Suspense fallback={<b>Loading</b>}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/phonebook" element={<Phonebook />} />
+        <Route path="login" element={<SigninPage />} />
+        <Route path="register" element={<SignupPage />} />
+      </Routes>
+    </Suspense>
   );
 };

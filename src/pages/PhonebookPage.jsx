@@ -1,10 +1,12 @@
+import { Header } from "../components/Header/Header";
 import { ContactForm } from "../components/ContactForm/ContactForm";
 import { SearchBox } from "../components/SearchBox/SearchBox";
 import { ContactList } from "../components/ContactsList/ContactList";
 
-const Search = () => {
+const Phonebook = () => {
   return (
     <>
+      <Header />
       <main>
         <h2
           style={{
@@ -23,4 +25,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default Phonebook;

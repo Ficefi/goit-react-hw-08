@@ -1,8 +1,13 @@
+import { Header } from "../components/Header/Header";
+
 const Home = () => {
   return (
-    <div>
-      <h1>Hello to our phonebook</h1>
-    </div>
+    <>
+      <Header />
+      <main>
+        <h1>Hello to our phonebook</h1>
+      </main>
+    </>
   );
 };
 
