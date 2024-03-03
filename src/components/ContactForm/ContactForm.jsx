@@ -3,7 +3,7 @@ import { BsFillPersonPlusFill } from "react-icons/bs";
 import { nanoid } from "nanoid";
 import { useId } from "react";
 import { useDispatch } from "react-redux";
-import { addToList } from "../../redux/operations";
+import { addToList } from "../../redux/contacts/operations";
 import * as Yup from "yup";
 import css from "./ContactForm.module.css";
 

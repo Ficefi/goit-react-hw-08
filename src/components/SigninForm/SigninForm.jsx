@@ -1,5 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useId } from "react";
+import { useDispatch } from "react-redux";
 import { logIn } from "../../redux/auth/operations";
 import * as Yup from "yup";
 import css from "./SigninForm.module.css";
@@ -17,6 +18,7 @@ const signinSchema = Yup.object().shape({
 export const SigninForm = () => {
   const emailID = useId();
   const passwordID = useId();
+  const dispatch = useDispatch();
 
   const initForm = {
     email: "",
@@ -45,12 +47,8 @@ export const SigninForm = () => {
   };
 
   return (
-    <Formik
-      validationSchema={signinSchema}
-      initialValues={initForm}
-      onSubmit={loginSubmit}
-    >
-      <Form className={css.form}>
+    <Formik validationSchema={signinSchema} initialValues={initForm}>
+      <Form className={css.form} onSubmit={loginSubmit}>
         <label htmlFor={emailID} className={css.user_label}>
           Email
         </label>
@@ -73,7 +71,7 @@ export const SigninForm = () => {
         />
         <ErrorMessage name="password" component="span" className={css.error} />
         <button type="submit" className={css.add_btn}>
-          Sign Up
+          Sign In
         </button>
       </Form>
     </Formik>

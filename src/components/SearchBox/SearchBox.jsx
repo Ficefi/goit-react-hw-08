@@ -1,7 +1,7 @@
 import { useId } from "react";
 import { BsSearch } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import { filterSearch } from "../../redux/filterSlice";
+import { filterSearch } from "../../redux/contacts/filterSlice";
 import css from "./SearchBox.module.css";
 
 export const SearchBox = () => {

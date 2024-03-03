@@ -3,7 +3,7 @@ import {
   BsFillTelephoneFill,
   BsTrash3,
 } from "react-icons/bs";
-import { deleteFromList } from "../../../redux/operations";
+import { deleteFromList } from "../../../redux/contacts/operations";
 import { useDispatch } from "react-redux";
 import css from "./Contact.module.css";
 

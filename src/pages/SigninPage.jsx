@@ -4,7 +4,6 @@ import { SigninForm } from "../components/SigninForm/SigninForm";
 const SigninPage = () => {
   return (
     <>
-      <Header />
       <SigninForm />
     </>
   );

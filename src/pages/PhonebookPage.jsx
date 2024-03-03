@@ -6,7 +6,6 @@ import { ContactList } from "../components/ContactsList/ContactList";
 const Phonebook = () => {
   return (
     <>
-      <Header />
       <main>
         <h2
           style={{
