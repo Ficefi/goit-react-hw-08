@@ -1,5 +1,6 @@
 .user_card {
   background: transparent;
+  color: #fff;
   border: 1px solid #fff;
   border-radius: 5px;
   height: 72px;
@@ -7,20 +8,40 @@
   position: relative;
   margin-right: 20px;
   margin-bottom: 20px;
-  color: #fff;
 }
 
 .user_icon {
   margin-right: 5px;
 }
 
-.delete_btn {
+.change_btn {
   position: absolute;
-  right: 10px;
-  bottom: 24px;
+  right: 30px;
+  bottom: 0;
+  top: 2px;
   cursor: pointer;
   background: none;
   border: none;
+}
+
+.delete_btn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.change_icon {
+  fill: #fff;
+  transition: fill 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.change_icon:hover {
+  fill: rgba(12, 68, 189, 0.6);
+  scale: 1.05;
 }
 
 .trash_icon {

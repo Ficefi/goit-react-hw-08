@@ -1,0 +1,32 @@
+.article {
+  color: #ffffff;
+  font-size: 24px;
+}
+
+.button_wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.button {
+  background-color: #ffffffab;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  font-weight: 750;
+}
+
+.button:hover {
+  background-color: black;
+  cursor: pointer;
+}
+
+.yes:hover {
+  color: rgb(135, 216, 14);
+}
+
+.no:hover {
+  color: red;
+}

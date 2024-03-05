@@ -1,6 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useId } from "react";
 import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
 import { logIn } from "../../redux/auth/operations";
 import * as Yup from "yup";
 import css from "./SigninForm.module.css";
@@ -10,7 +11,7 @@ const signinSchema = Yup.object().shape({
     .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{1,16}$/, "Your email is incorrect")
     .required("This is a required field"),
   password: Yup.string()
-    .min(3, "Password must be at least 3 symb long")
+    .min(8, "Password must be at least 8 symb long")
     .max(99, "Password is too long, change it!")
     .required("This is a required field"),
 });
@@ -37,10 +38,10 @@ export const SigninForm = () => {
     )
       .unwrap()
       .then(() => {
-        console.log("login success");
+        toast.success("Login Success");
       })
       .catch(() => {
-        console.log("login error");
+        toast.error("Login Error");
       });
 
     form.reset();

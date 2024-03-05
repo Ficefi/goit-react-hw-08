@@ -2,7 +2,7 @@ import "./App.css";
 import { useEffect, lazy } from "react";
 import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
-import { Toaster } from "react-hot-toast";
+import { BallTriangle } from "react-loader-spinner";
 import { useAuth } from "../hooks/useAuth";
 import { refreshUser } from "../redux/auth/operations";
 import { PrivateRoute } from "../components/PrivateRoute";
@@ -23,7 +23,16 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <b>Loading...</b>
+    <BallTriangle
+      height={100}
+      width={100}
+      radius={5}
+      color="#aaf"
+      ariaLabel="ball-triangle-loading"
+      wrapperStyle={{ margin: "0 auto" }}
+      wrapperClass=""
+      visible={true}
+    />
   ) : (
     <>
       <Routes>
@@ -55,7 +64,6 @@ export const App = () => {
           />
         </Route>
       </Routes>
-      <Toaster />
     </>
   );
 };

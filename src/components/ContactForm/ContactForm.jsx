@@ -3,6 +3,7 @@ import { BsFillPersonPlusFill } from "react-icons/bs";
 import { nanoid } from "nanoid";
 import { useId } from "react";
 import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
 import { addToList } from "../../redux/contacts/operations";
 import * as Yup from "yup";
 import css from "./ContactForm.module.css";
@@ -38,7 +39,15 @@ export const ContactForm = () => {
       validationSchema={userSchema}
       initialValues={init}
       onSubmit={(values, actions) => {
-        dispatch(addToList({ id: nanoid(), ...values }));
+        dispatch(addToList({ id: nanoid(), ...values }))
+          .unwrap()
+          .then(() => {
+            toast.success("You successful add new contact");
+          })
+          .catch(() => {
+            toast.error("You don`t add new contact");
+            toast.error("ERROR!");
+          });
         actions.resetForm();
       }}
     >

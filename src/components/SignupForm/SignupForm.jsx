@@ -15,7 +15,7 @@ const signupSchema = Yup.object().shape({
     .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{1,16}$/, "Your email is incorrect")
     .required("This is a required field"),
   password: Yup.string()
-    .min(3, "Password must be at least 3 symb long")
+    .min(8, "Password must be at least 8 symb long")
     .max(99, "Password is too long, change it!")
     .required("This is a required field"),
 });
@@ -42,7 +42,14 @@ export const SignupForm = () => {
         email: form.elements.email.value,
         password: form.elements.password.value,
       })
-    );
+    )
+      .unwrap()
+      .then(() => {
+        toast.success("Register Successful");
+      })
+      .catch(() => {
+        toast.error("Register Error");
+      });
 
     form.reset();
   };
