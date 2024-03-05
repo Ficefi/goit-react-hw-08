@@ -34,22 +34,38 @@ export const ContactForm = () => {
     number: "",
   };
 
+  const addSymbol = (number) => {};
+
+  const handleSubmit = (values, actions) => {
+    const { number } = values;
+    const numbers = number.split("");
+    let result = "";
+
+    for (let i = 0; i < numbers.length; i++) {
+      if (i === 2 || i === 5) {
+        result += `${numbers[i]}-`;
+      } else {
+        result += `${numbers[i]}`;
+      }
+    }
+
+    dispatch(addToList({ id: nanoid(), ...values, number: result }))
+      .unwrap()
+      .then(() => {
+        toast.success("You successful add new contact");
+      })
+      .catch(() => {
+        toast.error("You don`t add new contact");
+        toast.error("ERROR!");
+      });
+    actions.resetForm();
+  };
+
   return (
     <Formik
       validationSchema={userSchema}
       initialValues={init}
-      onSubmit={(values, actions) => {
-        dispatch(addToList({ id: nanoid(), ...values }))
-          .unwrap()
-          .then(() => {
-            toast.success("You successful add new contact");
-          })
-          .catch(() => {
-            toast.error("You don`t add new contact");
-            toast.error("ERROR!");
-          });
-        actions.resetForm();
-      }}
+      onSubmit={handleSubmit}
     >
       <Form className={css.form}>
         <label htmlFor={nameID} className={css.user_label}>
